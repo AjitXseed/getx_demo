@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:getx_demo/app/module/home/controller/home_page_controller.dart';
 
 class HomePage extends StatelessWidget{
   const HomePage({Key? key}) : super(key: key);
@@ -9,7 +10,7 @@ class HomePage extends StatelessWidget{
   Widget build(BuildContext context) {
     double width = Get.width;
     double height = Get.height;
-  var counter = 0.obs;
+    final HomePageController homePageController = Get.put(HomePageController());
    return Scaffold(     
      body: Padding(
        padding: EdgeInsets.only(left: width*0.2,right: width*0.2,top:height*0.1,bottom: height*0.1),
@@ -17,7 +18,7 @@ class HomePage extends StatelessWidget{
          children: [
            FittedBox(
              child: Obx((){
-               return Text("$counter",
+               return Text("${homePageController.homeData.value.counter}",
               style: const TextStyle(fontSize: 30,fontWeight: FontWeight.bold),
               );
              })
@@ -28,7 +29,7 @@ class HomePage extends StatelessWidget{
             children: [
              InkWell(
                onTap: (){
-                  counter = counter++;
+                  homePageController.increment();
                },
                child: const CircleAvatar(
                   backgroundColor: Colors.black54 ,
@@ -37,7 +38,7 @@ class HomePage extends StatelessWidget{
              ),
              InkWell(
                onTap: (){
-                 counter =counter--;
+                 homePageController.decrement();
                },
                child: const CircleAvatar(
                   backgroundColor: Colors.black54 ,
