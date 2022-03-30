@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:getx_demo/app/module/article/view/article_list.dart';
 import 'package:getx_demo/app/module/home/view/home_page.dart';
 
 void main() {
@@ -12,9 +13,9 @@ class MyApp extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    return const GetMaterialApp(   
+    return GetMaterialApp(   
       debugShowCheckedModeBanner: false,   
-      home:  HomePage(),
+      home:  Articles(),
     );
   }
 }
