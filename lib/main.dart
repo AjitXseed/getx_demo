@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_demo/app/module/home/view/home_page.dart';
+import 'package:getx_demo/second_page.dart';
+import 'package:getx_demo/utils/themes.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,9 +14,15 @@ class MyApp extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    return const GetMaterialApp(   
+    return  GetMaterialApp(   
       debugShowCheckedModeBanner: false,   
-      home:  HomePage(),
+      theme: Themes.light,
+      darkTheme: Themes.dark,
+      initialRoute: '/',
+      getPages: [
+        GetPage(name: '/', page: ()=>const HomePage()),
+        GetPage(name: '/second', page: ()=>SecondPage())
+      ],
     );
   }
 }
